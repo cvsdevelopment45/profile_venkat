@@ -1,0 +1,433 @@
+/* static/css/style.css */
+
+/* CSS Variables for Color Scheme */
+:root {
+    --primary-color: #2c3e50; /* Dark Blue */
+    --secondary-color: #3498db; /* Blue */
+    --accent-color: #1abc9c; /* Teal */
+    --light-bg: #ecf0f1; /* Light Grey */
+    --dark-text: #2c3e50; /* Dark Blue */
+    --light-text: #7f8c8d; /* Grey */
+    --header-bg: #2980b9; /* Medium Blue */
+}
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 25px;
+    display: block;
+}*/
+
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.right-aligned-container {
+    /* Display as flexbox */
+    display: flex;
+
+    /* Align the items to the right */
+    justify-content: flex-end;
+
+    /* Optional: Add some padding and margin to the container */
+    padding: 20px;
+    margin-right: 20px;
+
+    /* Optional: Add width to ensure alignment within the page */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+/* Social Links - Positioned to the right and updated colors */
+.social-links {
+    /* Align the social links container to the right within the flex container */
+    align-self: flex-end;
+
+    /* Optional: Add top margin for spacing */
+    margin-top: 10px;
+}
+
+.social-links a {
+    /* Change the link color to a vibrant blue for better visibility */
+    color: #3498db; /* Updated from #fff to #3498db */
+
+    /* Maintain horizontal spacing between icons */
+    margin: 0 10px;
+
+    /* Increase font size for better visibility */
+    font-size: 2.0em;
+
+    /* Smooth transition for color and scale on hover */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    /* Change color to the accent color on hover for emphasis */
+    color: var(--accent-color);
+
+    /* Slightly enlarge the icon on hover for interactivity */
+    transform: scale(1.2);
+}
+
+/* Download Resume Button - Positioned to the right */
+.download-btn {
+    /* Display as inline-block for proper padding and margin */
+    display: inline-block;
+
+    /* Add top margin for spacing */
+    margin-top: 15px;
+
+    /* Padding for clickable area */
+    padding: 10px 20px;
+
+    /* Background color using the accent color variable */
+    background-color: var(--accent-color);
+
+    /* Text color set to white for contrast */
+    color: #fff;
+
+    /* Remove underline from links */
+    text-decoration: none;
+
+    /* Rounded corners for a polished look */
+    border-radius: 25px;
+
+    /* Bold text for prominence */
+    font-weight: 600;
+
+    /* Smooth transition for background color and slight movement on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    /* Align the button to the right within the flex container */
+    align-self: flex-end;
+
+    /* Remove any left margin to prevent unintended spacing */
+    margin-left: 0;
+}
+
+.download-btn:hover {
+    /* Darken the background color on hover for visual feedback */
+    background-color: #218838; /* You can adjust this to another color if desired */
+
+    /* Slight upward movement on hover for interactivity */
+    transform: translateY(-3px);
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+/* Header Section */
+header {
+    background-color: var(--header-bg);
+    color: #fff;
+    padding: 30px 20px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    position: relative;
+}
+
+.header-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Items will align to the left by default */
+}
+
+
+.header-content p {
+    font-size: 1.2em;
+}
+
+.header-content a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.header-content a:hover {
+    color: var(--accent-color);
+}
+
+/* Navigation Bar */
+nav {
+    background-color: var(--secondary-color);
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 10px 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+nav ul li a i {
+    margin-right: 8px;
+}
+
+/* Section Styles */
+section {
+    margin-top: 30px;
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+section p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.skill-item {
+    background-color: var(--light-bg);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.skill-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.skill-item p {
+    font-size: 1em;
+    color: var(--light-text);
+}
+
+/* Certifications and Projects */
+.certifications ul,
+.project ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.project {
+    background-color: var(--light-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.project h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.project h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.project p {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.project ul li {
+    margin-bottom: 5px;
+    color: var(--dark-text);
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--header-bg);
+    color: #fff;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+}
+
+footer p {
+    font-size: 0.9em;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2em;
+    display: none; /* Hidden by default */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .header-content h1 {
+        font-size: 1.8em;
+    }
+
+    .download-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Responsive Design
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 8px 0;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+*/
+
+/* Optional: Show back-to-top button when scrolled */
+window.addEventListener('scroll', function() {
+    const backToTop = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+    } else {
+        backToTop.style.display = 'none';
+    }
+});
