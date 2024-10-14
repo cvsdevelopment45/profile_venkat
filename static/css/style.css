@@ -18,117 +18,86 @@
     box-sizing: border-box;
 }
 
-/*.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 25px;
-    display: block;
-}*/
+header {
+    background-color: #2C3E50; /* Darker, professional color */
+    color: #ECF0F1; /* Light, contrasting color for text */
+    padding: 5px 35px;
+    display: flex; /* Use flexbox to arrange header content and right-aligned container */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+}
 
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text content */
+    flex-grow: 1; /* Allow it to take up space and center itself */
+}
 
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 20px;
+.header-content h1 {
+    font-size: 2.5em;
+    margin: 0 0 10px; /* Adjusted margin */
+}
+
+.header-content p {
+    font-size: 1.2em;
+}
+
+.header-content a {
+    color: #ECF0F1; /* Match the text color */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.header-content a:hover {
+    color: #3498db; /* Accent color on hover */
 }
 
 .right-aligned-container {
-    /* Display as flexbox */
     display: flex;
-
-    /* Align the items to the right */
-    justify-content: flex-end;
-
-    /* Optional: Add some padding and margin to the container */
-    padding: 20px;
-    margin-right: 20px;
-
-    /* Optional: Add width to ensure alignment within the page */
-    width: 100%;
-    box-sizing: border-box;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-end; /* Align items to the right */
 }
 
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px; /* Spacing below profile picture */
+}
 
-
-/* Social Links - Positioned to the right and updated colors */
 .social-links {
-    /* Align the social links container to the right within the flex container */
-    align-self: flex-end;
-
-    /* Optional: Add top margin for spacing */
-    margin-top: 10px;
+    margin-bottom: 15px; /* Spacing below social links */
 }
 
 .social-links a {
-    /* Change the link color to a vibrant blue for better visibility */
-    color: #3498db; /* Updated from #fff to #3498db */
-
-    /* Maintain horizontal spacing between icons */
+    color: #3498db; /* Blue color for social icons */
     margin: 0 10px;
-
-    /* Increase font size for better visibility */
     font-size: 2.0em;
-
-    /* Smooth transition for color and scale on hover */
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-links a:hover {
-    /* Change color to the accent color on hover for emphasis */
-    color: var(--accent-color);
-
-    /* Slightly enlarge the icon on hover for interactivity */
+    color: #2980b9; /* Slightly darker blue on hover */
     transform: scale(1.2);
 }
 
-/* Download Resume Button - Positioned to the right */
 .download-btn {
-    /* Display as inline-block for proper padding and margin */
     display: inline-block;
-
-    /* Add top margin for spacing */
-    margin-top: 15px;
-
-    /* Padding for clickable area */
     padding: 10px 20px;
-
-    /* Background color using the accent color variable */
-    background-color: var(--accent-color);
-
-    /* Text color set to white for contrast */
+    background-color: #3498db; /* Updated to match the theme */
     color: #fff;
-
-    /* Remove underline from links */
     text-decoration: none;
-
-    /* Rounded corners for a polished look */
     border-radius: 25px;
-
-    /* Bold text for prominence */
     font-weight: 600;
-
-    /* Smooth transition for background color and slight movement on hover */
     transition: background-color 0.3s ease, transform 0.3s ease;
-
-    /* Align the button to the right within the flex container */
-    align-self: flex-end;
-
-    /* Remove any left margin to prevent unintended spacing */
-    margin-left: 0;
 }
 
 .download-btn:hover {
-    /* Darken the background color on hover for visual feedback */
-    background-color: #218838; /* You can adjust this to another color if desired */
-
-    /* Slight upward movement on hover for interactivity */
-    transform: translateY(-3px);
+    background-color: #2980b9; /* Darker shade on hover */
 }
-
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -147,43 +116,6 @@ body {
     border-radius: 10px;
 }
 
-/* Header Section */
-header {
-    background-color: var(--header-bg);
-    color: #fff;
-    padding: 30px 20px;
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-    position: relative;
-}
-
-.header-content h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Items will align to the left by default */
-}
-
-
-.header-content p {
-    font-size: 1.2em;
-}
-
-.header-content a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-.header-content a:hover {
-    color: var(--accent-color);
-}
 
 /* Navigation Bar */
 nav {
