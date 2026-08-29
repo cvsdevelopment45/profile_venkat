@@ -1,20 +1,17 @@
 /**
  * VENKAT PORTFOLIO - ULTRA-MODERN JAVASCRIPT ENGINE
- * Features:
- * - Particle & Constellation WebGL/Canvas Animation
- * - Typewriter Hero Headline Animation
- * - Interactive 3D Tilt Avatar Card
- * - Interactive Developer Terminal (CLI)
- * - Project Filter & Modal Inspector
- * - Testimonials Carousel
- * - Dynamic Theme Accent Switcher (Stored in LocalStorage)
- * - Live Timezone Clock & Contact Copy triggers
- * - Toast Notification System
+ * Modular HTML Component Loader & Interactive Features
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. Initialize background particle canvas & ambient aura immediately
   initParticleCanvas();
   initCursorGlow();
+
+  // 2. Load all modular components asynchronously
+  await loadComponents();
+
+  // 3. Initialize all interactive UI modules once DOM elements are populated
   initTypewriter();
   init3DCardTilt();
   initThemeSwitcher();
@@ -25,6 +22,32 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactAndUtils();
   initMobileNav();
 });
+
+/* ==========================================================================
+   MODULAR COMPONENT LOADER
+   Loads HTML component snippets asynchronously into [data-component] slots
+   ========================================================================== */
+async function loadComponents() {
+  const componentElements = document.querySelectorAll('[data-component]');
+  
+  const loadPromises = Array.from(componentElements).map(async (element) => {
+    const file = element.getAttribute('data-component');
+    if (!file) return;
+
+    try {
+      const response = await fetch(file);
+      if (!response.ok) {
+        throw new Error(`Failed to load ${file}: ${response.statusText}`);
+      }
+      const htmlContent = await response.text();
+      element.outerHTML = htmlContent;
+    } catch (err) {
+      console.error(`Component loader error for ${file}:`, err);
+    }
+  });
+
+  await Promise.all(loadPromises);
+}
 
 /* ==========================================================================
    1. PARTICLE & CONSTELLATION CANVAS
@@ -211,8 +234,6 @@ function init3DCardTilt() {
   const card = document.getElementById('card3d');
   if (!card) return;
 
-  const inner = card.querySelector('.avatar-card-inner');
-
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -269,16 +290,16 @@ function initTerminal() {
 
   function switchTab(target) {
     if (target === 'terminal') {
-      tabTerminal.classList.add('active');
-      tabStory.classList.remove('active');
-      viewTerminal.classList.add('active');
-      viewStory.classList.remove('active');
+      if (tabTerminal) tabTerminal.classList.add('active');
+      if (tabStory) tabStory.classList.remove('active');
+      if (viewTerminal) viewTerminal.classList.add('active');
+      if (viewStory) viewStory.classList.remove('active');
       if (termInput) termInput.focus();
     } else {
-      tabStory.classList.add('active');
-      tabTerminal.classList.remove('active');
-      viewStory.classList.add('active');
-      viewTerminal.classList.remove('active');
+      if (tabStory) tabStory.classList.add('active');
+      if (tabTerminal) tabTerminal.classList.remove('active');
+      if (viewStory) viewStory.classList.add('active');
+      if (viewTerminal) viewTerminal.classList.remove('active');
     }
   }
 
@@ -289,7 +310,8 @@ function initTerminal() {
 
   if (openTerminalHero) {
     openTerminalHero.addEventListener('click', () => {
-      document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+      const aboutSec = document.getElementById('about');
+      if (aboutSec) aboutSec.scrollIntoView({ behavior: 'smooth' });
       switchTab('terminal');
     });
   }
@@ -327,10 +349,10 @@ function initTerminal() {
   };
 
   function executeCommand(rawCmd) {
+    if (!termOutput) return;
     const cmd = rawCmd.trim().toLowerCase();
     if (!cmd) return;
 
-    // Create user prompt line
     const userLine = document.createElement('div');
     userLine.className = 'term-line';
     userLine.innerHTML = `<span class="term-prompt">venkat@architect:~$</span> <span class="term-cmd">${rawCmd}</span>`;
@@ -348,7 +370,8 @@ function initTerminal() {
       responseLine.innerHTML = commands[cmd].replace(/\n/g, '<br>');
       if (cmd === 'sudo hire') {
         setTimeout(() => {
-          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+          const contactSec = document.getElementById('contact');
+          if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
         }, 1200);
       }
     } else {
@@ -368,7 +391,6 @@ function initTerminal() {
     });
   }
 
-  // Quick chip buttons inside terminal
   document.querySelectorAll('.term-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const cmd = chip.dataset.cmd;
@@ -463,33 +485,35 @@ function initProjects() {
     trigger.addEventListener('click', () => {
       const pid = trigger.dataset.target;
       const data = projectData[pid];
-      if (!data) return;
+      if (!data || !modal) return;
 
-      modalTitle.textContent = data.title;
-      modalBadge.textContent = data.badge;
+      if (modalTitle) modalTitle.textContent = data.title;
+      if (modalBadge) modalBadge.textContent = data.badge;
 
-      modalBody.innerHTML = `
-        <div style="margin-bottom: 16px;">
-          <h4 style="color:#fff; font-size: 1rem; margin-bottom: 6px;">System Overview</h4>
-          <p style="color:var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">${data.overview}</p>
-        </div>
-        <div style="margin-bottom: 16px;">
-          <h4 style="color:#fff; font-size: 1rem; margin-bottom: 6px;">Technical Architecture</h4>
-          <p style="color:var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">${data.architecture}</p>
-        </div>
-        <div style="margin-bottom: 20px;">
-          <h4 style="color:#fff; font-size: 1rem; margin-bottom: 8px;">Key Engineering Outcomes</h4>
-          <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
-            ${data.highlights.map(h => `<li style="font-size:0.88rem; color:var(--text-secondary);"><i class="fa-solid fa-check text-accent" style="margin-right:8px;"></i>${h}</li>`).join('')}
-          </ul>
-        </div>
-        <div>
-          <h4 style="color:#fff; font-size: 1rem; margin-bottom: 8px;">Core Tech Stack</h4>
-          <div style="display:flex; flex-wrap:wrap; gap:6px;">
-            ${data.stack.map(s => `<span class="tech-chip">${s}</span>`).join('')}
+      if (modalBody) {
+        modalBody.innerHTML = `
+          <div style="margin-bottom: 16px;">
+            <h4 style="color:#fff; font-size: 1rem; margin-bottom: 6px;">System Overview</h4>
+            <p style="color:var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">${data.overview}</p>
           </div>
-        </div>
-      `;
+          <div style="margin-bottom: 16px;">
+            <h4 style="color:#fff; font-size: 1rem; margin-bottom: 6px;">Technical Architecture</h4>
+            <p style="color:var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">${data.architecture}</p>
+          </div>
+          <div style="margin-bottom: 20px;">
+            <h4 style="color:#fff; font-size: 1rem; margin-bottom: 8px;">Key Engineering Outcomes</h4>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+              ${data.highlights.map(h => `<li style="font-size:0.88rem; color:var(--text-secondary);"><i class="fa-solid fa-check text-accent" style="margin-right:8px;"></i>${h}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:#fff; font-size: 1rem; margin-bottom: 8px;">Core Tech Stack</h4>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+              ${data.stack.map(s => `<span class="tech-chip">${s}</span>`).join('')}
+            </div>
+          </div>
+        `;
+      }
 
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
@@ -498,6 +522,7 @@ function initProjects() {
 
   // Modal Close
   function closeModal() {
+    if (!modal) return;
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
   }
@@ -544,8 +569,8 @@ function initTestimonials() {
     quoteEl.style.opacity = '0';
     setTimeout(() => {
       quoteEl.textContent = `"${testimonials[idx].quote}"`;
-      authorEl.textContent = testimonials[idx].author;
-      roleEl.textContent = testimonials[idx].role;
+      if (authorEl) authorEl.textContent = testimonials[idx].author;
+      if (roleEl) roleEl.textContent = testimonials[idx].role;
       quoteEl.style.opacity = '1';
     }, 200);
   }
@@ -568,6 +593,7 @@ function initTestimonials() {
    ========================================================================== */
 function initMetricsCounter() {
   const metricNumbers = document.querySelectorAll('.metric-number');
+  if (!metricNumbers.length) return;
   let animated = false;
 
   const observer = new IntersectionObserver((entries) => {
@@ -674,26 +700,36 @@ function initContactAndUtils() {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const submitBtn = document.getElementById('submitContactBtn');
-      const name = document.getElementById('userName').value.trim();
-      const email = document.getElementById('userEmail').value.trim();
-      const message = document.getElementById('userMessage').value.trim();
+      const nameInput = document.getElementById('userName');
+      const emailInput = document.getElementById('userEmail');
+      const messageInput = document.getElementById('userMessage');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
 
       if (!name || !email || !message) {
         showToast('Please fill in all required fields.', 'error');
         return;
       }
 
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Encrypting & Sending...</span>`;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Encrypting & Sending...</span>`;
+      }
 
       setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Transmission Delivered!</span>`;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Transmission Delivered!</span>`;
+        }
         showToast(`Thank you, ${name}. Your message has been transmitted securely.`);
         contactForm.reset();
 
         setTimeout(() => {
-          submitBtn.innerHTML = `<span class="btn-text">Transmit Message</span> <i class="fa-solid fa-paper-plane"></i>`;
+          if (submitBtn) {
+            submitBtn.innerHTML = `<span class="btn-text">Transmit Message</span> <i class="fa-solid fa-paper-plane"></i>`;
+          }
         }, 4000);
       }, 1200);
     });

@@ -1,0 +1,104 @@
+    <!-- INTERACTIVE CONTACT & ENGAGEMENT HUB -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-handshake"></i> COLLABORATION HUB
+          </div>
+          <h2 class="section-heading">Let's Build Something Extraordinary</h2>
+          <p class="section-subtext">Have an ambitious project, executive role, or advisory consultation in mind? Send a direct transmission.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Info & Quick Copy Badges -->
+          <div class="contact-info-panel glass-card">
+            <div class="panel-header">
+              <h3>Direct Channels</h3>
+              <p>Quick response guaranteed within 24 hours.</p>
+            </div>
+
+            <div class="contact-card-list">
+              <div class="contact-card-item">
+                <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="c-info">
+                  <small>Email Address</small>
+                  <strong>venkat@architect.dev</strong>
+                </div>
+                <button class="copy-btn" data-clipboard="venkat@architect.dev" title="Copy to clipboard">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <div class="contact-card-item">
+                <div class="c-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="c-info">
+                  <small>Location & Timezone</small>
+                  <strong>San Francisco / Remote (UTC-8)</strong>
+                </div>
+                <span class="live-clock-badge" id="liveClock">11:35 AM</span>
+              </div>
+
+              <div class="contact-card-item">
+                <div class="c-icon"><i class="fa-solid fa-shield-check"></i></div>
+                <div class="c-info">
+                  <small>PGP Fingerprint</small>
+                  <code class="pgp-code">4A92 8F21 990B 11FE...</code>
+                </div>
+                <button class="copy-btn" data-clipboard="4A92 8F21 990B 11FE" title="Copy PGP">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Download vCard & Calendar Schedule -->
+            <div class="contact-actions-row">
+              <button class="btn btn-outline btn-full" id="downloadResumeBtn">
+                <i class="fa-solid fa-download"></i>
+                <span>Download Full Resume (PDF)</span>
+              </button>
+              <button class="btn btn-glass btn-full" id="scheduleCallBtn">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Book 30-min Strategy Call</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Transmission Form -->
+          <div class="contact-form-panel glass-card">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="userName"><i class="fa-solid fa-user"></i> Your Name</label>
+                  <input type="text" id="userName" name="name" required placeholder="Jane Doe" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label for="userEmail"><i class="fa-solid fa-at"></i> Work Email</label>
+                  <input type="email" id="userEmail" name="email" required placeholder="jane@enterprise.com" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="projectType"><i class="fa-solid fa-shapes"></i> Engagement Nature</label>
+                <select id="projectType" name="type" class="form-select">
+                  <option value="lead-role">Executive / Principal Engineering Role</option>
+                  <option value="consulting">High-Scale Architecture Consulting</option>
+                  <option value="ai-mvp">AI & Distributed System Build</option>
+                  <option value="speaking">Keynote / Technical Advisory</option>
+                  <option value="general">General Networking / Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="userMessage"><i class="fa-solid fa-comment-dots"></i> Project Brief / Message</label>
+                <textarea id="userMessage" name="message" rows="5" required placeholder="Tell me about your goals, timelines, or technology vision..." class="form-textarea"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg btn-full glow-btn" id="submitContactBtn">
+                <span class="btn-text">Transmit Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>

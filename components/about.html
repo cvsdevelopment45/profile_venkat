@@ -1,0 +1,119 @@
+    <!-- INTERACTIVE TERMINAL & ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-fingerprint"></i> PROFILE DOSSIER
+          </div>
+          <h2 class="section-heading">Engineering Excellence & Vision</h2>
+          <p class="section-subtext">Toggle between structured narrative insights and an interactive developer CLI terminal.</p>
+        </div>
+
+        <!-- Mode Switch Tabs -->
+        <div class="view-mode-tabs">
+          <button class="mode-tab-btn active" data-target="about-story" id="tabStory">
+            <i class="fa-solid fa-book-open"></i> Story & Core Philosophy
+          </button>
+          <button class="mode-tab-btn" data-target="about-terminal" id="tabTerminal">
+            <i class="fa-solid fa-terminal"></i> Interactive Shell CLI
+          </button>
+        </div>
+
+        <!-- Tab 1: Story View -->
+        <div class="tab-content active" id="about-story">
+          <div class="about-grid">
+            <div class="about-story-card glass-card">
+              <div class="card-icon-header">
+                <div class="icon-circle"><i class="fa-solid fa-compass-drafting"></i></div>
+                <h3>The Engineering Philosophy</h3>
+              </div>
+              <p>
+                I believe in building software that doesn't just meet requirements today, but withstands the demands of hyper-growth tomorrow. My approach marries clean, predictable system architecture with hyper-intuitive, visually inspiring user experiences.
+              </p>
+              <p>
+                Having architected systems that handle millions of requests while maintaining millisecond latencies, my focus spans high-availability cloud microservices, stateful real-time WebSockets, AI agent orchestrations, and reactive frontend ecosystems.
+              </p>
+              <div class="core-pillars">
+                <div class="pillar-item">
+                  <i class="fa-solid fa-gauge-high text-accent"></i>
+                  <span>Sub-second Latency</span>
+                </div>
+                <div class="pillar-item">
+                  <i class="fa-solid fa-shield-virus text-accent"></i>
+                  <span>Fail-safe Fault Tolerance</span>
+                </div>
+                <div class="pillar-item">
+                  <i class="fa-solid fa-wand-magic-sparkles text-accent"></i>
+                  <span>Refined Polish & UX</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-stats-grid">
+              <div class="stat-box glass-card">
+                <div class="stat-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <div class="stat-info">
+                  <h4 class="stat-value">50M+</h4>
+                  <p class="stat-desc">Monthly API Calls Handled</p>
+                </div>
+              </div>
+
+              <div class="stat-box glass-card">
+                <div class="stat-icon"><i class="fa-solid fa-code-pull-request"></i></div>
+                <div class="stat-info">
+                  <h4 class="stat-value">2,800+</h4>
+                  <p class="stat-desc">Production Commits</p>
+                </div>
+              </div>
+
+              <div class="stat-box glass-card">
+                <div class="stat-icon"><i class="fa-solid fa-people-group"></i></div>
+                <div class="stat-info">
+                  <h4 class="stat-value">25+</h4>
+                  <p class="stat-desc">Engineers Mentored & Led</p>
+                </div>
+              </div>
+
+              <div class="stat-box glass-card">
+                <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="stat-info">
+                  <h4 class="stat-value">12+</h4>
+                  <p class="stat-desc">Global Industry Awards</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Terminal View -->
+        <div class="tab-content" id="about-terminal">
+          <div class="terminal-window glass-card">
+            <div class="terminal-titlebar">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="terminal-title"><i class="fa-solid fa-terminal"></i> venkat@cloud-core: ~ (zsh)</div>
+              <div class="terminal-badge">LIVE REPL</div>
+            </div>
+            <div class="terminal-body" id="terminalOutput">
+              <div class="term-line output-line">Welcome to Venkat's Interactive Neural Console v4.2.0</div>
+              <div class="term-line output-line">Type <span class="term-highlight">'help'</span> to see available commands or click quick suggestions below:</div>
+              <div class="terminal-quick-chips">
+                <button class="term-chip" data-cmd="skills">skills</button>
+                <button class="term-chip" data-cmd="experience">experience</button>
+                <button class="term-chip" data-cmd="projects">projects</button>
+                <button class="term-chip" data-cmd="contact">contact</button>
+                <button class="term-chip" data-cmd="sudo hire">sudo hire</button>
+                <button class="term-chip" data-cmd="clear">clear</button>
+              </div>
+            </div>
+            <div class="terminal-input-row">
+              <span class="term-prompt">venkat@architect:~$</span>
+              <input type="text" id="terminalInput" class="term-input" placeholder="Type a command (e.g. 'help', 'skills', 'about')..." autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
