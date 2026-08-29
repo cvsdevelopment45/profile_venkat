@@ -1,0 +1,10 @@
+﻿services:
+- type: web
+  name: venkat-portfolio
+  env: static
+  plan: free
+  buildCommand: echo "No build step needed"
+  startCommand: "python -m http.server 8080"
+  autoDeploy: true
+  healthCheckPath: /
+  staticPublishPath: .
